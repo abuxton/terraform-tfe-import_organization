@@ -9,14 +9,17 @@ Due to nature of Infrastructure of Code, terraform as a declarative language and
 **_NOTE:_** Setting a `$TFE_TOKEN` environment variable is the recommended approach for the TFE provider auth. You may find the below helpful
 
 ```shell
-
+export TFE_TOKEN="<your token from TFE service>"
 alias tf-token-helper="export TFE_TOKEN=$(cat ~/.terraform.d/credentials.tfrc.json | jq -r '.credentials."app.terraform.io".token' )"
-
+export TF_VAR_tfc_org_token=$TFE_TOKEN
 ```
 
 ### Credits
 
 * <https://github.com/alexbasista/terraform-tfe-workspacer>
+
+![XKCD a flipant answer to most things!](https://imgs.xkcd.com/comics/fixing_problems.png) "XKCD the answer to most things! ")
+[https://xkcd.com/1739/](https://xkcd.com/1739/)
 
 <!-- BEGIN_TF_DOCS -->
 ## Requirements
@@ -43,7 +46,7 @@ No modules.
 | Name | Type |
 |------|------|
 | [tfe_team.this](https://registry.terraform.io/providers/hashicorp/tfe/latest/docs/resources/team) | resource |
-| [terracurl_request.test](https://registry.terraform.io/providers/devops-rob/terracurl/1.2.1/docs/data-sources/request) | data source |
+| [terracurl_request.teams](https://registry.terraform.io/providers/devops-rob/terracurl/1.2.1/docs/data-sources/request) | data source |
 | [tfe_teams.this](https://registry.terraform.io/providers/hashicorp/tfe/latest/docs/data-sources/teams) | data source |
 
 ## Inputs
@@ -62,4 +65,5 @@ No modules.
 | <a name="output_teams"></a> [teams](#output\_teams) | n/a |
 | <a name="output_teams_import_list"></a> [teams\_import\_list](#output\_teams\_import\_list) | n/a |
 | <a name="output_teams_import_map"></a> [teams\_import\_map](#output\_teams\_import\_map) | n/a |
+| <a name="output_terracurl_data_teams_responce"></a> [terracurl\_data\_teams\_responce](#output\_terracurl\_data\_teams\_responce) | n/a |
 <!-- END_TF_DOCS -->

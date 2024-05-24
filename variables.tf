@@ -2,6 +2,10 @@ variable "tfc_org" {
   type        = string
   description = "name of the HCP terraform or Terraform enterprise organization"
 }
+variable "tfc_org_token" {
+  type        = string
+  description = "your TFC org level token, or token with sufficient permissions `export TF_VAR_tfc_org_token`"
+}
 
 #------------------------------------------------------------------------------
 # Teams

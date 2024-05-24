@@ -11,6 +11,9 @@ output "teams_import_list" {
 output "teams_import_map" {
   value = local.themap
 }
+output "terracurl_data_teams_responce" {
+  value = jsondecode(data.terracurl_request.teams.response)
+}
 
 locals {
   thelist = var.import_teams == "all" || var.import_teams == "data" ? formatlist("%s/%s", data.tfe_teams.this["data"].id, data.tfe_teams.this["data"].names) : []
@@ -26,9 +29,10 @@ resource "tfe_team" "this" {
   name     = each.key
 }
 #TODO terracurl get org permissions from API
-data "terracurl_request" "test" {
-  name   = "products"
-  url    = "https://api.releases.hashicorp.com/v1/organizations/${var.tfc_org}/teams"
+data "terracurl_request" "teams" {
+  #for_each     = var.import_teams == "all" || var.import_teams == "data" ? { "data" = "true" } : {}
+  name   = "teams"
+  url    = "https://app.terraform.io/v2/organizations/${var.tfc_org}/teams"
   method = "GET"
 
   response_codes = [
@@ -37,4 +41,8 @@ data "terracurl_request" "test" {
 
   max_retry      = 1
   retry_interval = 10
+  headers = {
+    Authorization = "Bearer ${var.tfc_org_token}"
+    Content-Type  = "application/vnd.api+json"
+  }
 }
