@@ -1,6 +1,6 @@
 data "tfe_teams" "this" {
   for_each     = var.import_teams == "all" || var.import_teams == "data" ? { "data" = "true" } : {}
-  organization = var.tfe_org
+  organization = var.tfc_org
 }
 output "teams" {
   value = var.import_teams == "all" || var.import_teams == "data" ? data.tfe_teams.this : null
@@ -26,3 +26,15 @@ resource "tfe_team" "this" {
   name     = each.key
 }
 #TODO terracurl get org permissions from API
+data "terracurl_request" "test" {
+  name   = "products"
+  url    = "https://api.releases.hashicorp.com/v1/organizations/${var.tfc_org}/teams"
+  method = "GET"
+
+  response_codes = [
+    200
+  ]
+
+  max_retry      = 1
+  retry_interval = 10
+}
