@@ -14,6 +14,9 @@ alias tf-token-helper="export TFE_TOKEN=$(cat ~/.terraform.d/credentials.tfrc.js
 export TF_VAR_tfc_org_token=$TFE_TOKEN
 ```
 
+**_NOTE:_**  Pagination of curl and the Terraform APIs only support upto 100 paged entries, This code only supports the default 20. If you require more than that either update the code with a `*_override.tf` file or you'll have to use curl and extract the data more directly to feed back into the code <https://developer.hashicorp.com/terraform/cloud-docs/api-docs#pagination>
+
+
 ### Credits
 
 * <https://github.com/alexbasista/terraform-tfe-workspacer>
