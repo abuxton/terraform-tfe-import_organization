@@ -32,7 +32,7 @@ resource "tfe_team" "this" {
 data "terracurl_request" "teams" {
   #for_each     = var.import_teams == "all" || var.import_teams == "data" ? { "data" = "true" } : {}
   name   = "teams"
-  url    = "https://app.terraform.io/v2/organizations/${var.tfc_org}/teams"
+  url    = "https://app.terraform.io/api/v2/organizations/${var.tfc_org}/teams"
   method = "GET"
 
   response_codes = [

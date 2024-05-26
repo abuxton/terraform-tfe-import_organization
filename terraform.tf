@@ -11,6 +11,7 @@ terraform {
   }
 }
 provider "tfe" {
+  organization = var.tfc_org
 }
 provider "terracurl" {
 }
