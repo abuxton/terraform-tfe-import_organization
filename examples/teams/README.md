@@ -15,7 +15,7 @@ export TF_TOKEN = < Organization or Owners Team token >
 export VAR_TF_tfc_org_token = < Organization or Owners Team token >
 
 cat <<EOF >> teams.auto.tfvars
-# one of ["all", "data", "false"]
+# one of ["true", "data", "false"]
 import_teams    = "false"
 tfc_org         = "example_org"
 tfc_org_token   = $TF_TOKEN || $VAR_TF_tfc_org_token
@@ -30,7 +30,7 @@ When `var.import_teams == false` only the outputs `teams` and `terracurl_data_te
 
 When `var.import_teams == data` only all outputs will be populated, this allows you to review what you will imported and plan for changes.
 
-### import_teams = all
+### import_teams = true
 
-When `var.import_teams == all` then the available resources will be imported to state.
+When `var.import_teams == true` then the available resources will be imported to state.
 **_NOTE:_** Stepping `var.import_teams` back to `data` or `false` is a destructive action once this change has been made.

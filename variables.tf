@@ -16,7 +16,18 @@ variable "team_access" {
   description = "Map of existing Team(s) and built-in permissions to grant on Workspace."
   default     = {}
 }
-
+variable "teams_import_map" {
+  type = map(
+    object(
+      {
+        team         = string
+        org_and_team = string
+      }
+    )
+  )
+  description = "(Optional Map) This map is intended to be populated by capturing the output of `terarform output teams_import_map`"
+  default     = {}
+}
 variable "custom_team_access" {
   type = map(
     object(
@@ -37,9 +48,9 @@ variable "custom_team_access" {
 variable "import_teams" {
   type        = string
   default     = "false"
-  description = "(optional bool) Enable team imports, outputs and data"
+  description = "(optional [\"true\", \"data\", \"false\"]) Enable team imports, import data output, and initial API data capture"
   validation {
-    condition     = contains(["all", "data", "false"], var.import_teams)
-    error_message = "The variable can oply be one of ('all','data','false')"
+    condition     = contains(["true", "data", "false"], var.import_teams)
+    error_message = "The variable can oply be one of ('true','data','false')"
   }
 }
