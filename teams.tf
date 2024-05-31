@@ -21,8 +21,8 @@ data "terracurl_request" "teams" {
   }
 }
 locals {
-  thelist                  = contains(["true", "data"], var.import_teams) ? formatlist("%s/%s", data.tfe_teams.this["data"].id, data.tfe_teams.this["data"].names) : []
-  themap                   = contains(["true", "data"], var.import_teams) ? zipmap(data.tfe_teams.this["data"].names, local.thelist) : {}
+  team_list                = contains(["true", "data"], var.import_teams) ? formatlist("%s/%s", data.tfe_teams.this["data"].id, data.tfe_teams.this["data"].names) : []
+  team_map                 = contains(["true", "data"], var.import_teams) ? zipmap(data.tfe_teams.this["data"].names, local.team_list) : {}
   terracurl_teams_response = contains(["data"], var.import_teams) ? jsondecode(data.terracurl_request.teams["data"].response) : null
 }
 output "teams" {
@@ -30,7 +30,7 @@ output "teams" {
   description = "Output for teams data_source"
 }
 output "teams_import_map" {
-  value       = local.themap
+  value       = local.team_map
   description = "Output intended to be used for `var.teams_import_map` input"
 }
 output "terracurl_data_teams_response" {
