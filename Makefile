@@ -34,10 +34,11 @@ docs: ## populate README.md with terraform-docs
 terraform-override: ## override provided file
 	cp ./$(file) $(basename $(file))_override.tf
 
-fmt:
+fmt: ## fmt and tflint module folder
 # requires https://github.com/terraform-linters/tflint
 	terraform fmt
 	tflint
+
 .PHONY: help
 help:  ## Show help messages for make targets
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(firstword $(MAKEFILE_LIST)) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[32m%-30s\033[0m %s\n", $$1, $$2}'
