@@ -2,6 +2,9 @@
 
 This module is a set of code to help you take control of a manual created HCP Terraform or Terraform Enterprise organization.
 
+![XKCD a flipant answer to most things!](https://imgs.xkcd.com/comics/fixing_problems.png  "XKCD the answer to most things! ")
+[https://xkcd.com/1739/](https://xkcd.com/1739/)
+
 ## Usage
 
 Due to nature of Infrastructure of Code, terraform as a declarative language and this modules focus on the import capabilities of the Terraform Cli and language block usage is beyond scope of the README. The `./examples` folder talks through utilizing this module.
@@ -28,9 +31,6 @@ export TF_VAR_tfc_org_token=$TFE_TOKEN
 ### Credits
 
 * <https://github.com/alexbasista/terraform-tfe-workspacer>
-
-![XKCD a flipant answer to most things!](https://imgs.xkcd.com/comics/fixing_problems.png) "XKCD the answer to most things! ")
-[https://xkcd.com/1739/](https://xkcd.com/1739/)
 
 <!-- BEGIN_TF_DOCS -->
 ## Requirements
