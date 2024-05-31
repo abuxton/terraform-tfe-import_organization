@@ -106,3 +106,4 @@ When `var.import_teams == true` then the available resources will be imported to
 terraform output teams_import_map | sed -e 's/tomap(/teams_import_map = /g' | sed -e 's/)//g' >> example.auto.tfvars.example
 ```
 
+Once you have the teams imported if you wish to manage them further and update the resource it is advised you use a [move block](https://developer.hashicorp.com/terraform/language/modules/develop/refactoring#moved-block-syntax) to take further control of the resource and remove it from the `var.team_import_map` afterwards.
