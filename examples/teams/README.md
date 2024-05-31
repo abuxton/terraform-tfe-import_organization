@@ -28,7 +28,8 @@
 
 ### Usage
 
-<https://developer.hashicorp.com/terraform/cloud-docs/api-docs/teams>
+To provide data and resources to import and take control of teams in HCP Terraform or Terraform Enterprise utilizing the [teams API](https://developer.hashicorp.com/terraform/cloud-docs/api-docs/teams)
+
 **_NOTE:_** The organization token and the owners team token can act as an owner on these endpoints.
 
 Populate the `*.tfvars` file as needed and illustrated below;
