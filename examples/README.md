@@ -12,4 +12,4 @@ Each resource collection is provided example and additional usage documentation.
 ```
 
 ## Teams
-[teams examples](./teams/README.md])
+[teams examples](./teams/README.md)
