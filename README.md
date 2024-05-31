@@ -7,7 +7,7 @@ This module is a set of code to help you take control of a manual created HCP Te
 
 ## Usage
 
-Due to nature of Infrastructure of Code, terraform as a declarative language and this modules focus on the import capabilities of the Terraform Cli and language block usage is beyond scope of the README. The `[./examples](./examples/README.md)` folder talks through utilizing this module.
+Due to nature of Infrastructure of Code, terraform as a declarative language and this modules focus on the import capabilities of the Terraform Cli and language block usage is beyond scope of the README. The [./examples](./examples/README.md) folder talks through utilizing this module.
 
 **_NOTE:_** Import Blocks are *ONLY* allowed in route declarations or you will encounter the following if you try use this codebase as a module;
 
