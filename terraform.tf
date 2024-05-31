@@ -12,6 +12,7 @@ terraform {
 }
 provider "tfe" {
   organization = var.tfc_org
+  hostname     = var.tfe_hostname
 }
 provider "terracurl" {
 }

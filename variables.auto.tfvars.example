@@ -2,3 +2,4 @@ import_teams     = "false" # ["true", "data", "false"]
 teams_import_map = { "team name" = "${var.tfc_org}/team-name" }
 tfc_org          = "<your tfc org>"
 tfc_org_token    = "<org or org level team token>"
+tfe_hostname     = "app.terarform.io"

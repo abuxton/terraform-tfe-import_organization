@@ -68,12 +68,13 @@ No modules.
 | <a name="input_teams_import_map"></a> [teams\_import\_map](#input\_teams\_import\_map) | (Optional Map) This map of Strings is intended to be populated by capturing the output of `terarform output teams_import_map` | `map(any)` | `{}` | no |
 | <a name="input_tfc_org"></a> [tfc\_org](#input\_tfc\_org) | (Required) Name of the HCP terraform or Terraform enterprise organization | `string` | n/a | yes |
 | <a name="input_tfc_org_token"></a> [tfc\_org\_token](#input\_tfc\_org\_token) | (Required Sensitive) Your TFC Org or Owners team level token, or token with sufficient permissions `export TF_VAR_tfc_org_token=TF_TOKEN` | `string` | n/a | yes |
+| <a name="input_tfe_hostname"></a> [tfe\_hostname](#input\_tfe\_hostname) | (Optional sting) Terraform Enterprise server hostname defaults to HCP terraforms hostname `app.terraform.io` | `string` | `"app.terraform.io"` | no |
 
 ## Outputs
 
 | Name | Description |
 |------|-------------|
-| <a name="output_teams"></a> [teams](#output\_teams) | n/a |
-| <a name="output_teams_import_map"></a> [teams\_import\_map](#output\_teams\_import\_map) | n/a |
-| <a name="output_terracurl_data_teams_response"></a> [terracurl\_data\_teams\_response](#output\_terracurl\_data\_teams\_response) | n/a |
+| <a name="output_teams"></a> [teams](#output\_teams) | Output for teams data\_source |
+| <a name="output_teams_import_map"></a> [teams\_import\_map](#output\_teams\_import\_map) | Output intended to be used for `var.teams_import_map` input |
+| <a name="output_terracurl_data_teams_response"></a> [terracurl\_data\_teams\_response](#output\_terracurl\_data\_teams\_response) | The output from terracurl json response to the `teams` api endpoint |
 <!-- END_TF_DOCS -->

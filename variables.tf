@@ -2,11 +2,17 @@ variable "tfc_org" {
   type        = string
   description = "(Required) Name of the HCP terraform or Terraform enterprise organization"
 }
+variable "tfe_hostname" {
+  type        = string
+  description = "(Optional sting) Terraform Enterprise server hostname defaults to HCP terraforms hostname `app.terraform.io`"
+  default     = "app.terraform.io"
+}
 variable "tfc_org_token" {
   type        = string
   description = "(Required Sensitive) Your TFC Org or Owners team level token, or token with sufficient permissions `export TF_VAR_tfc_org_token=TF_TOKEN`"
   sensitive   = true
 }
+
 
 #------------------------------------------------------------------------------
 # Teams

@@ -6,7 +6,7 @@ data "tfe_teams" "this" {
 data "terracurl_request" "teams" {
   for_each = var.import_teams == "data" ? { "data" = "true" } : {}
   name     = "teams"
-  url      = "https://app.terraform.io/api/v2/organizations/${var.tfc_org}/teams"
+  url      = "https://${var.tfe_hostname}/api/v2/organizations/${var.tfc_org}/teams"
   method   = "GET"
 
   response_codes = [
@@ -26,13 +26,16 @@ locals {
   terracurl_teams_response = contains(["data"], var.import_teams) ? jsondecode(data.terracurl_request.teams["data"].response) : null
 }
 output "teams" {
-  value = var.import_teams == "true" || var.import_teams == "data" ? data.tfe_teams.this : null
+  value       = var.import_teams == "true" || var.import_teams == "data" ? data.tfe_teams.this : null
+  description = "Output for teams data_source"
 }
 output "teams_import_map" {
-  value = local.themap
+  value       = local.themap
+  description = "Output intended to be used for `var.teams_import_map` input"
 }
 output "terracurl_data_teams_response" {
-  value = local.terracurl_teams_response
+  value       = local.terracurl_teams_response
+  description = "The output from terracurl json response to the `teams` api endpoint"
 }
 
 
