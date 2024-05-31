@@ -2,6 +2,7 @@ terraform {
   required_version = "~>1.8"
   required_providers {
     tfe = {
+      source  = "hashicorp/tfe"
       version = "~> 0.55.0"
     }
     terracurl = {
