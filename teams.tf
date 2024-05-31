@@ -39,11 +39,11 @@ output "terracurl_data_teams_response" {
 }
 
 
-import {
-  for_each = var.import_teams == "true" && var.teams_import_map != null ? var.teams_import_map : {}
-  to       = tfe_team.this[each.key]
-  id       = each.value
-}
+# import {
+#   for_each = var.import_teams == "true" && var.teams_import_map != null ? var.teams_import_map : {}
+#   to       = tfe_team.this[each.key]
+#   id       = each.value
+# }
 resource "tfe_team" "this" {
   for_each = var.import_teams == "true" && var.teams_import_map != null ? var.teams_import_map : {}
   name     = each.key
