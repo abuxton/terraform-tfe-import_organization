@@ -14,5 +14,5 @@ has such each example talks to redeclaring the codebase as needed.
 
 ./examples
 ├── README.md
-└── <./teams.md>
+└── [teams](./teams/README.md)
 

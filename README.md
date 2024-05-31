@@ -4,7 +4,13 @@ This module is a set of code to help you take control of a manual created HCP Te
 
 ## Usage
 
-Due to nature of Infrastructure of Code, terraform as a declarative language and this modules focus on the Import capabilities of the Terraform Cli and language block usage is beyond scope of the README. The `./examples` folder talks through utilizing this module.
+Due to nature of Infrastructure of Code, terraform as a declarative language and this modules focus on the import capabilities of the Terraform Cli and language block usage is beyond scope of the README. The `./examples` folder talks through utilizing this module.
+
+**_NOTE:_** Import Blocks are *ONLY* allowed in route declarations or you will encounter the following if you try use this codebase as a module;
+
+```json
+ Error: An import block was detected in "module.example". Import blocks are only allowed in the
+```
 
 **_NOTE:_** Setting a `$TFE_TOKEN` environment variable is the recommended approach for the TFE provider auth. You may find the below helpful
 
@@ -15,6 +21,8 @@ export TF_VAR_tfc_org_token=$TFE_TOKEN
 ```
 
 **_NOTE:_**  Pagination of curl and the Terraform APIs only support upto 100 paged entries, This code only supports the default 20. If you require more than that either update the code with a `*_override.tf` file or you'll have to use curl and extract the data more directly to feed back into the code <https://developer.hashicorp.com/terraform/cloud-docs/api-docs#pagination>
+
+**_NOTE:_** You may want `jq` or equivalent tool to work with `json` .
 
 
 ### Credits
@@ -56,17 +64,16 @@ No modules.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| <a name="input_custom_team_access"></a> [custom\_team\_access](#input\_custom\_team\_access) | Map of existing Team(s) and custom permissions to grant on Workspace. If used, all keys in the object must be specified. | <pre>map(<br>    object(<br>      {<br>        runs              = string<br>        variables         = string<br>        state_versions    = string<br>        sentinel_mocks    = string<br>        workspace_locking = bool<br>        run_tasks         = bool<br>      }<br>    )<br>  )</pre> | `{}` | no |
-| <a name="input_import_teams"></a> [import\_teams](#input\_import\_teams) | (optional bool) Enable team imports, outputs and data | `string` | `"false"` | no |
-| <a name="input_team_access"></a> [team\_access](#input\_team\_access) | Map of existing Team(s) and built-in permissions to grant on Workspace. | `map(string)` | `{}` | no |
-| <a name="input_tfc_org"></a> [tfc\_org](#input\_tfc\_org) | name of the HCP terraform or Terraform enterprise organization | `string` | n/a | yes |
+| <a name="input_import_teams"></a> [import\_teams](#input\_import\_teams) | (Optional ["true", "data", "false"]) Enable team imports, import data output, and initial API data capture | `string` | `"false"` | no |
+| <a name="input_teams_import_map"></a> [teams\_import\_map](#input\_teams\_import\_map) | (Optional Map) This map of Strings is intended to be populated by capturing the output of `terarform output teams_import_map` | `map(any)` | `{}` | no |
+| <a name="input_tfc_org"></a> [tfc\_org](#input\_tfc\_org) | (Required) Name of the HCP terraform or Terraform enterprise organization | `string` | n/a | yes |
+| <a name="input_tfc_org_token"></a> [tfc\_org\_token](#input\_tfc\_org\_token) | (Required Sensitive) Your TFC Org or Owners team level token, or token with sufficient permissions `export TF_VAR_tfc_org_token=TF_TOKEN` | `string` | n/a | yes |
 
 ## Outputs
 
 | Name | Description |
 |------|-------------|
 | <a name="output_teams"></a> [teams](#output\_teams) | n/a |
-| <a name="output_teams_import_list"></a> [teams\_import\_list](#output\_teams\_import\_list) | n/a |
 | <a name="output_teams_import_map"></a> [teams\_import\_map](#output\_teams\_import\_map) | n/a |
-| <a name="output_terracurl_data_teams_responce"></a> [terracurl\_data\_teams\_responce](#output\_terracurl\_data\_teams\_responce) | n/a |
+| <a name="output_terracurl_data_teams_response"></a> [terracurl\_data\_teams\_response](#output\_terracurl\_data\_teams\_response) | n/a |
 <!-- END_TF_DOCS -->
