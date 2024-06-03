@@ -1,3 +1,6 @@
+#------------------------------------------------------------------------------
+# TFE provider
+#------------------------------------------------------------------------------
 variable "tfc_org" {
   type        = string
   description = "(Required) Name of the HCP terraform or Terraform enterprise organization"
@@ -13,13 +16,12 @@ variable "tfc_org_token" {
   sensitive   = true
 }
 
-
 #------------------------------------------------------------------------------
 # Teams
 #------------------------------------------------------------------------------
 variable "teams_import_map" {
   type        = map(any)
-  description = "(Optional Map) This map of Strings is intended to be populated by capturing the output of `terarform output teams_import_map`"
+  description = "(Optional Map) This map of Strings is intended to be populated by capturing the output of `terrarform output teams_import_map`"
   default     = {}
 }
 
@@ -29,7 +31,25 @@ variable "import_teams" {
   description = "(Optional [\"true\", \"data\", \"false\"]) Enable team imports, import data output, and initial API data capture"
   validation {
     condition     = contains(["true", "data", "false"], var.import_teams)
-    error_message = "The variable can oply be one of ('true','data','false')"
+    error_message = "The variable can oply be one of ('true','data','false')."
   }
 }
 
+#------------------------------------------------------------------------------
+# projects
+#------------------------------------------------------------------------------
+variable "projects_import_map" {
+  type        = map(any)
+  description = "(Optional Map) This map of Strings is intended to be populated by capturing the output of `terraform output projects_import_map` {'name' = 'prj-*'}"
+  default     = {}
+}
+
+variable "import_projects" {
+  type        = string
+  default     = "false"
+  description = "(Optional [\"true\", \"data\", \"false\"]) Enable projects imports, import data output, and initial API data capture."
+  validation {
+    condition     = contains(["true", "data", "false"], var.import_projects)
+    error_message = "The variable can only be one of ('true','data','false')."
+  }
+}

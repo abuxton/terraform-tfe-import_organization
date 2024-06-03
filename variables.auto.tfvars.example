@@ -1,5 +1,7 @@
-import_teams     = "false" # ["true", "data", "false"]
-teams_import_map = { "team name" = "${var.tfc_org}/team-name" }
 tfc_org          = "<your tfc org>"
 tfc_org_token    = "<org or org level team token>"
 tfe_hostname     = "app.terarform.io"
+import_projects     = "false" # ["true", "data", "false"]
+projects_import_map = { "project name" = "project-id" }
+import_teams     = "false" # ["true", "data", "false"]
+teams_import_map = { "team name" = "${var.tfc_org}/team-name" }
