@@ -36,6 +36,19 @@ variable "import_teams" {
 }
 
 #------------------------------------------------------------------------------
+# Organization
+#------------------------------------------------------------------------------
+variable "import_organization" {
+  type        = string
+  default     = "false"
+  description = "(Optional [\"true\", \"data\", \"false\"]) Enable organization import, import data output, and initial API data capture"
+  validation {
+    condition     = contains(["true", "data", "false"], var.import_organization)
+    error_message = "The variable can only be one of ('true','data','false')."
+  }
+}
+
+#------------------------------------------------------------------------------
 # projects
 #------------------------------------------------------------------------------
 variable "projects_import_map" {
@@ -50,6 +63,25 @@ variable "import_projects" {
   description = "(Optional [\"true\", \"data\", \"false\"]) Enable projects imports, import data output, and initial API data capture."
   validation {
     condition     = contains(["true", "data", "false"], var.import_projects)
+    error_message = "The variable can only be one of ('true','data','false')."
+  }
+}
+
+#------------------------------------------------------------------------------
+# Workspaces
+#------------------------------------------------------------------------------
+variable "workspaces_import_map" {
+  type        = map(any)
+  description = "(Optional Map) This map of Strings is intended to be populated by capturing the output of `terraform output workspaces_import_map` {'name' = 'ws-*'}"
+  default     = {}
+}
+
+variable "import_workspaces" {
+  type        = string
+  default     = "false"
+  description = "(Optional [\"true\", \"data\", \"false\"]) Enable workspace imports, import data output, and initial API data capture."
+  validation {
+    condition     = contains(["true", "data", "false"], var.import_workspaces)
     error_message = "The variable can only be one of ('true','data','false')."
   }
 }
