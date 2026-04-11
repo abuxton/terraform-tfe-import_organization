@@ -26,7 +26,7 @@ locals {
 }
 
 output "organization" {
-  value       = contains(["data", "true"], var.import_organization) ? data.tfe_organization.this : null
+  value       = contains(["data", "true"], var.import_organization) ? data.tfe_organization.this["data"] : null
   description = "Output for organization data source"
 }
 
