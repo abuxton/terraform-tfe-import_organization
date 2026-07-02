@@ -1,7 +1,10 @@
 tfc_org          = "<your tfc org>"
 tfc_org_token    = "<org or org level team token>"
-tfe_hostname     = "app.terarform.io"
+tfe_hostname     = "app.terraform.io"
+import_organization = "false" # ["true", "data", "false"]
 import_projects     = "false" # ["true", "data", "false"]
 projects_import_map = { "project name" = "project-id" }
 import_teams     = "false" # ["true", "data", "false"]
 teams_import_map = { "team name" = "${var.tfc_org}/team-name" }
+import_workspaces    = "false" # ["true", "data", "false"]
+workspaces_import_map = { "workspace name" = "ws-*" }
