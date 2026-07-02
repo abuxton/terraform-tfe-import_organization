@@ -1,0 +1,42 @@
+{
+  "mcpServers": {
+    "github": {
+      "command": "docker",
+      "args": [
+        "run",
+        "--rm",
+        "-i",
+        "--env-file",
+        "/dev/stdin",
+        "ghcr.io/github/github-mcp-server"
+      ],
+      "env": {
+        "GITHUB_PERSONAL_ACCESS_TOKEN": "${GITHUB_TOKEN}"
+      }
+    },
+    "filesystem": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-filesystem",
+        "${workspaceFolder}"
+      ]
+    },
+    "terraform-ls": {
+      "command": "terraform-ls",
+      "args": ["serve"],
+      "description": "HashiCorp Terraform Language Server — provides hover docs, go-to-definition, and diagnostics for .tf files"
+    },
+		"terraform": {
+      "command": "docker",
+      "args": [
+        "run",
+        "-i",
+        "--rm",
+        "-e",
+        "TFE_TOKEN",
+        "hashicorp/terraform-mcp-server"
+      ]
+    }
+  }
+}
